@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestExecSql(t *testing.T) {
+func TestInsert(t *testing.T) {
 	db := GetConnection()
 	defer db.Close()
 
@@ -46,4 +46,18 @@ func TestExecQuerySql(t *testing.T) {
 		}
 		fmt.Printf("id: %d, nama: %s, umur: %d, alamat: %s \n", id, nama, umur, alamat)
 	}
+}
+
+func TestExecUpdateSql(t *testing.T) {
+	db := GetConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+	updateSql := "UPDATE `go-user` SET umur = ? WHERE id = ?"
+	_, err := db.ExecContext(ctx, updateSql, 20, 2)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Data Successfully Updated")
 }
