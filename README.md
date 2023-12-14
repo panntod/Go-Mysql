@@ -53,6 +53,8 @@ CREATE TABLE `go-user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
+Atau Import Table dari [Tabel Go-User](https://github.com/panntod/Go-Mysql/tree/main/MySql)
+
 ## Urutan Pembuatan Source Code
 
 1. **database_test.go**
