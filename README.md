@@ -6,7 +6,7 @@ Dalam repo ini, belajar pemrograman Golang menggunakan basis data MySQL. mempela
 
 ## Fitur
 
-- Sistem CRUD GO-User
+- Sistem CRUD
 - Akses MySql
 - Driver GO
 - Test
@@ -27,11 +27,30 @@ Jalan kan perintah ini untuk membuat package gosql:
 go mod init go-sql
 ```
 
-### Langkah 2: 
+### Langkah 3: 
 
 Jalan kan perintah ini untuk mendapatkan package driver:
 ```
 go get -u github.com/go-sql-driver/mysql
+```
+
+### Langkah 4: 
+
+Buat Database MySql Dengan menjalankan Perintah:
+```sql
+CREATE DATABASE go_crud;
+```
+
+### Langkah 5: 
+
+Buat Table go-user MySql Dengan menjalankan Perintah:
+```sql
+CREATE TABLE `go-user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nama` varchar(255) NOT NULL,
+  `umur` int(10) NOT NULL,
+  `alamat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
 ## Urutan Pembuatan Source Code
