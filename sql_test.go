@@ -11,8 +11,8 @@ func TestExecInsert(t *testing.T) {
 	defer db.Close()
 
 	ctx := context.Background()
-	insertSql := "INSERT INTO `go-user` (nama, umur, alamat) VALUES ('asfina', 16, 'kepanjen')"
-	_, err := db.ExecContext(ctx, insertSql)
+	insertSql := "INSERT INTO `go-user` (nama, umur, alamat) VALUES (?, ?, ?)"
+	_, err := db.ExecContext(ctx, insertSql, "dharma", 12, "malang")
 	if err != nil {
 		panic(err)
 	}
