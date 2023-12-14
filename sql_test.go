@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestInsert(t *testing.T) {
+func TestExecInsert(t *testing.T) {
 	db := GetConnection()
 	defer db.Close()
 
@@ -60,4 +60,18 @@ func TestExecUpdateSql(t *testing.T) {
 	}
 
 	fmt.Println("Data Successfully Updated")
+}
+
+func TestExecDeleteSql(t *testing.T) {
+	db := GetConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+	deleteSql := "DELETE FROM `go-user` WHERE id = ?"
+	_, err := db.ExecContext(ctx, deleteSql, 3)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Data Successfully Deleted")
 }
