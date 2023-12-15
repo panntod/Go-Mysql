@@ -1,0 +1,40 @@
+### Added
+POST http://localhost:5000/insert
+Content-Type: application/json
+
+{
+    "nama": "John Doe",
+    "umur": 30,
+    "alamat": "123 Main Street"
+}
+
+### Get
+GET http://localhost:5000/select
+
+### Get by id
+GET http://localhost:5000/select/2
+
+### Update
+PUT http://localhost:5000/update/2
+Content-Type: application/json
+
+{
+    "umur": 13
+}
+
+### Delete
+DELETE http://localhost:5000/delete/4
+
+###
+POST http://ahsanzizan.xyz/createAdmin
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="username"
+
+pandhu
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="password"
+
+admin
+----WebKitFormBoundary7MA4YWxkTrZu0gW--
