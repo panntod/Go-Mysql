@@ -118,6 +118,29 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": result})
 	})
 
+	router.PUT("/update/:id", func(c *gin.Context) {
+		db := Connection()
+		defer db.Close()
+
+		id := c.Param("id")
+		var req struct {
+			Umur int `json:"umur"`
+		}
+
+		if err := c.BindJSON(&req); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		updateSql := "UPDATE `go-user` SET umur = ? WHERE id = ?"
+		_, err := db.ExecContext(ctx, updateSql, req.Umur, id)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"message": "Data Successfully Updated"})
+	})
+
 	if err := router.Run(":5000"); err != nil {
 		log.Fatal(err.Error())
 	}
