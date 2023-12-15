@@ -141,6 +141,21 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "Data Successfully Updated"})
 	})
 
+	router.DELETE("/delete/:id", func(c *gin.Context) {
+		db := Connection()
+		defer db.Close()
+
+		id := c.Param("id")
+
+		deleteSql := "DELETE FROM `go-user` WHERE id = ?"
+		_, err := db.ExecContext(ctx, deleteSql, id)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"message": "Data Successfully Deleted"})
+	})
+
 	if err := router.Run(":5000"); err != nil {
 		log.Fatal(err.Error())
 	}
