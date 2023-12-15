@@ -1,4 +1,4 @@
-package gomysql
+package main
 
 import (
 	"context"
