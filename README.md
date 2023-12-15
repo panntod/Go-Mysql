@@ -36,7 +36,7 @@ go get -u github.com/go-sql-driver/mysql
 
 ### Langkah 4: 
 
-Jalan kan perintah ini untuk mendapatkan package driver:
+Jalan kan perintah ini untuk mendapatkan framework gin:
 ```
 go get -u go get -u github.com/gin-gonic/gin
 ```
