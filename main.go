@@ -85,6 +85,39 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": data})
 	})
 
+	router.GET("/select/:id", func(c *gin.Context) {
+		db := Connection()
+		defer db.Close()
+
+		id := c.Param("id")
+		selectSql := "SELECT * FROM `go-user` WHERE id = ?"
+
+		row := db.QueryRow(selectSql, id)
+		var (
+			resultID int
+			nama     string
+			umur     int
+			alamat   string
+		)
+
+		if err := row.Scan(&resultID, &nama, &umur, &alamat); err != nil {
+			if err == sql.ErrNoRows {
+				c.JSON(http.StatusNotFound, gin.H{"message": "User not found"})
+				return
+			}
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+
+		result := gin.H{
+			"id":     resultID,
+			"nama":   nama,
+			"umur":   umur,
+			"alamat": alamat,
+		}
+		c.JSON(http.StatusOK, gin.H{"data": result})
+	})
+
 	if err := router.Run(":5000"); err != nil {
 		log.Fatal(err.Error())
 	}
