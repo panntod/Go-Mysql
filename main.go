@@ -53,6 +53,38 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "Data Successfully Inserted"})
 	})
 
+	router.GET("/select", func(c *gin.Context) {
+		db := Connection()
+		defer db.Close()
+
+		selectSql := "SELECT * FROM `go-user`"
+		rows, err := db.QueryContext(ctx, selectSql)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		defer rows.Close()
+
+		var data []gin.H
+		for rows.Next() {
+			var (
+				id     int
+				nama   string
+				umur   int
+				alamat string
+			)
+
+			err = rows.Scan(&id, &nama, &umur, &alamat)
+			if err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+				return
+			}
+
+			data = append(data, gin.H{"id": id, "nama": nama, "umur": umur, "alamat": alamat})
+		}
+		c.JSON(http.StatusOK, gin.H{"data": data})
+	})
+
 	if err := router.Run(":5000"); err != nil {
 		log.Fatal(err.Error())
 	}
