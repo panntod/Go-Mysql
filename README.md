@@ -1,16 +1,16 @@
-# GO MySql
+# GO MySql 🚀
 
 ## Deskripsi
 
-Dalam repo ini, belajar pemrograman Golang menggunakan basis data MySQL. mempelajari cara terhubung ke MySQL, mengirim perintah SQL ke MySQL dan menangani masalah SQL Injection. Menggunakan database driver yang disediakan oleh Third-party dari [Go Developer](https://github.com/go-sql-driver/mysql).
+Dalam repo ini, belajar pemrograman Golang menggunakan basis data MySQL. Mempelajari cara terhubung ke MySQL, mengirim perintah SQL ke MySQL, dan menangani masalah SQL Injection. Menggunakan database driver yang disediakan oleh Third-party dari [Go Developer](https://github.com/go-sql-driver/mysql).
 
 ## Fitur
 
-- Sistem CRUD
-- Akses MySql
-- Driver GO
-- Test
-- Rest API
+- Sistem CRUD ✨
+- Akses MySql 📊
+- Driver GO 🚗
+- Test 🧪
+- Rest API 🌐
 
 ## Cara Membuat Aplikasi
 
